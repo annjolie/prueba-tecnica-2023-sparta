@@ -47,6 +47,7 @@
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
     "@types/styled-components": "^5.1.26",
+    "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
@@ -83,6 +84,7 @@
     "inquirer-directory": "^2.2.0",
     "plop": "^3.1.2",
     "styled-components": "^5.3.8",
-    "styled-normalize": "^8.0.7"
+    "styled-normalize": "^8.0.7",
+    "uuid": "^9.0.0"
   }
 }
