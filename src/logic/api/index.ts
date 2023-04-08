@@ -1,6 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const loginHandler = () => {
+export interface LoginResponse {
+  token: string;
+}
+
+export const loginHandler = (): Promise<LoginResponse> => {
   return new Promise((resolve) => {
     resolve({
       token: uuidv4()
