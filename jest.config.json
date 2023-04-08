@@ -1,0 +1,10 @@
+{
+  "bail": 1,
+  "verbose": true,
+  "setupFilesAfterEnv": ["<rootDir>/setupTests.js"],
+  "preset": "ts-jest/presets/js-with-babel",
+  "testEnvironment": "node",
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  }
+}

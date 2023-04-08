@@ -1,0 +1,21 @@
+@font-face {
+  font-family: Abel;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../public/assets/fonts/Abel-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Monserrat;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../public/assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../public/assets/fonts/Lato-Regular.ttf') format('truetype');
+}
+
