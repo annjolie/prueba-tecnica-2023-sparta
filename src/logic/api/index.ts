@@ -11,3 +11,9 @@ export const loginHandler = (): Promise<LoginResponse> => {
     });
   });
 };
+
+export const logoutHandler = (): Promise<void> => {
+  return new Promise((resolve) => {
+    resolve();
+  });
+};

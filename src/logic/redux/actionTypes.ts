@@ -3,7 +3,7 @@ interface LoginAction {
   payload: { token: string };
 }
 
-interface LogoutAction {
+export interface LogoutAction {
   type: AuthActionTypes.LOGOUT;
 }
 

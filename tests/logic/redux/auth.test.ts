@@ -1,16 +1,32 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from '../../../src/logic/redux/auth';
-import { login, logout } from '../../../src/logic/redux/actions';
+import { loginHandler, logoutHandler } from '../../../src/logic/api';
+import {
+  AuthActionTypes,
+  LogoutAction
+} from '../../../src/logic/redux/actionTypes';
+
+// Mock the uuidv4 function to always return a specific UUID
+jest.mock('uuid', () => ({
+  v4: () => 'mock-uuid'
+}));
 
 describe('authReducer', () => {
-  it('handles actions of type LOGIN', () => {
-    const action = login('123');
+  it('handles actions of type LOGIN', async () => {
+    const response = await loginHandler();
+    const action = {
+      type: AuthActionTypes.LOGIN,
+      payload: { token: response.token }
+    };
     const newState = authReducer({ token: null }, action);
-    expect(newState.token).toEqual('123');
+    expect(newState.token).toEqual('mock-uuid');
   });
 
-  it('handles actions of type LOGOUT', () => {
-    const action = logout();
+  it('handles actions of type LOGOUT', async () => {
+    await logoutHandler();
+    const action: LogoutAction = {
+      type: AuthActionTypes.LOGOUT
+    };
     const newState = authReducer({ token: '123' }, action);
     expect(newState.token).toEqual(null);
   });
@@ -21,12 +37,16 @@ describe('authReducer', () => {
     expect(newState.token).toEqual(null);
   });
 
-  it('should persist the token when loginSuccess is dispatched', () => {
+  it('should persist the token when loginSuccess is dispatched', async () => {
     const store = configureStore({
       reducer: { auth: authReducer }
     });
-    const token = '1234';
-    store.dispatch(login(token));
-    expect(store.getState().auth.token).toEqual(token);
+    const response = await loginHandler();
+    const action = {
+      type: AuthActionTypes.LOGIN,
+      payload: { token: response.token }
+    };
+    store.dispatch(action);
+    expect(store.getState().auth.token).toEqual(response.token);
   });
 });
