@@ -16,7 +16,7 @@ describe('tasksReducer', () => {
       }
     };
 
-    const newState = tasksReducer(action);
+    const newState = tasksReducer({ tasks: [] }, action);
 
     expect(newState.tasks.length).toEqual(1);
     expect(newState.tasks[0].id).toEqual(1);
@@ -49,7 +49,7 @@ describe('tasksReducer', () => {
       }
     };
 
-    const newState = tasksReducer(action, prevState);
+    const newState = tasksReducer(prevState, action);
 
     expect(newState.tasks.length).toEqual(2);
     expect(newState.tasks[1].id).toEqual(2);
@@ -82,7 +82,7 @@ describe('tasksReducer', () => {
       }
     };
 
-    const newState = tasksReducer(action, prevState);
+    const newState = tasksReducer(prevState, action);
 
     expect(newState.tasks.length).toEqual(1);
     expect(newState.tasks[0].id).toEqual(1);
@@ -110,7 +110,7 @@ describe('tasksReducer', () => {
       type: TaskActionTypes.CLEAR
     };
 
-    const newState = tasksReducer(action, prevState);
+    const newState = tasksReducer(prevState, action);
 
     expect(newState.tasks.length).toEqual(0);
 
@@ -118,7 +118,13 @@ describe('tasksReducer', () => {
       type: TaskActionTypes.GET
     };
 
-    const getState = tasksReducer(getAction);
+    const getState = tasksReducer({ tasks: [] }, getAction);
     expect(getState.tasks.length).toEqual(0);
+  });
+
+  it('handles action with unknown type', () => {
+    const action = { type: 'UNKNOWN' };
+    const newState = tasksReducer({ tasks: [] }, action as any);
+    expect(newState.tasks).toEqual([]);
   });
 });

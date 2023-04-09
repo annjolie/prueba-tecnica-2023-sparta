@@ -23,8 +23,8 @@ const updateTasks = (tasks: TaskTypes[], task: TaskTypes) => {
 
 // Define the authReducer function to handle authentication actions
 export const tasksReducer = (
-  action: TaskAction,
-  state = initialAuthState
+  state = initialAuthState,
+  action: TaskAction
 ): TaskState => {
   switch (action.type) {
     case TaskActionTypes.ADD:
