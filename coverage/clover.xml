@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681070462448" clover="3.2.0">
-  <project timestamp="1681070462448" name="All files">
+<coverage generated="1681070637321" clover="3.2.0">
+  <project timestamp="1681070637321" name="All files">
     <metrics statements="19" coveredstatements="19" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6" elements="33" coveredelements="33" complexity="0" loc="19" ncloc="19" packages="2" files="3" classes="3"/>
     <package name="api">
       <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <file name="index.ts" path="C:\Users\Annjo\Documents\Proyectos\prueba-tecnica-2023-sparta\src\logic\api\index.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="redux">
+    <package name="auth">
       <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
-      <file name="actionTypes.ts" path="C:\Users\Annjo\Documents\Proyectos\prueba-tecnica-2023-sparta\src\logic\redux\actionTypes.ts">
+      <file name="actionTypes.ts" path="C:\Users\Annjo\Documents\Proyectos\prueba-tecnica-2023-sparta\src\logic\auth\actionTypes.ts">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="12" count="1" type="cond" truecount="2" falsecount="0"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
       </file>
-      <file name="auth.ts" path="C:\Users\Annjo\Documents\Proyectos\prueba-tecnica-2023-sparta\src\logic\redux\auth.ts">
+      <file name="index.ts" path="C:\Users\Annjo\Documents\Proyectos\prueba-tecnica-2023-sparta\src\logic\auth\index.ts">
         <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from '../../../src/logic/redux/auth';
+import { authReducer } from '../../../src/logic/auth';
 import { loginHandler, logoutHandler } from '../../../src/logic/api';
 import {
   AuthActionTypes,
   LogoutAction
-} from '../../../src/logic/redux/actionTypes';
+} from '../../../src/logic/auth/actionTypes';
 
 // Mock the uuidv4 function to always return a specific UUID
 jest.mock('uuid', () => ({
