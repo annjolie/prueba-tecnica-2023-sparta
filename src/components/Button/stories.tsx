@@ -19,4 +19,10 @@ export default {
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  variant: 'primary'
+};
+export const NoBackground = Template.bind({});
+NoBackground.args = {
+  variant: 'no-bg'
+};

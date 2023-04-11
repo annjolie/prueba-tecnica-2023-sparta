@@ -1,2 +1,2 @@
 import type { ButtonProps } from './types';
-export default function Button({ label, className, onClick }: ButtonProps): JSX.Element;
+export default function Button({ className, href, label, onClick }: ButtonProps): JSX.Element;
