@@ -8,6 +8,7 @@ import {
   Subtitle1,
   Subtitle2,
   Body1,
+  Small,
   ButtonText,
   CaptionText,
   OverlineText
@@ -39,6 +40,7 @@ export default function Typography({
         consectetur, neque doloribus, cupiditate numquam dignissimos laborum
         fugiat deleniti? Eum quasi quidem quibusdam.
       </Body1>
+      <Small>Small</Small>
       <ButtonText>Button Text</ButtonText>
       <CaptionText>Caption Text</CaptionText>
       <OverlineText>Overline Text</OverlineText>

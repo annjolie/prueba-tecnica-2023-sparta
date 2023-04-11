@@ -29,15 +29,16 @@ declare const untypedThemes: {
                 purpleSunset100: string;
                 purpleSunset50: string;
                 violet: string;
-                gray100: string;
-                gray200: string;
-                gray300: string;
-                gray400: string;
-                gray500: string;
-                gray600: string;
-                gray700: string;
-                gray800: string;
-                gray900: string;
+                neutral100: string;
+                neutral200: string;
+                neutral300: string;
+                neutral400: string;
+                neutral500: string;
+                neutral600: string;
+                neutral700: string;
+                neutral800: string;
+                neutral900: string;
+                white: string;
             };
             secondary: {
                 supportError800: string;

@@ -37,15 +37,17 @@ const theme = {
 
       violet: '#9926f8',
 
-      gray100: '#F9FAFB',
-      gray200: '#e9ecef',
-      gray300: '#DDE0E5',
-      gray400: '#CED4DA',
-      gray500: '#ADB5BD',
-      gray600: '#6C757D',
-      gray700: '#495057',
-      gray800: '#343A40',
-      gray900: '#212529'
+      neutral100: '#F7F6F9',
+      neutral200: '#E8E7ED',
+      neutral300: '#D5D4DC',
+      neutral400: '#B2B0BC',
+      neutral500: '#908E9A',
+      neutral600: '#6F6D79',
+      neutral700: '#4F4D57',
+      neutral800: '#2F2D37',
+      neutral900: '#100F16',
+
+      white: '#ffffff'
     },
     secondary: {
       supportError800: '#7A1000',
@@ -99,20 +101,12 @@ const theme = {
   },
   lineHeights: {
     normal: 'normal',
-    none: 1,
-    shorter: 1.25,
-    short: 1.375,
-    base: 1.5,
-    tall: 1.625,
-    taller: '2',
-    3: '.75rem',
-    4: '1rem',
-    5: '1.25rem',
-    6: '1.5rem',
-    7: '1.75rem',
-    8: '2rem',
-    9: '2.25rem',
-    10: '2.5rem'
+    none: '1rem',
+    shorter: '1.25rem',
+    short: '1.375rem',
+    base: '1.5rem',
+    tall: '1.625rem',
+    taller: '2rem'
   },
   letterSpacings: {
     tighter: '-0.05em',

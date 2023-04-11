@@ -3,6 +3,7 @@ import {
   body1,
   body2,
   body3,
+  small,
   button,
   caption,
   overline,
@@ -30,6 +31,8 @@ export const Subtitle1 = styled(body1)``;
 export const Subtitle2 = styled(body2)``;
 
 export const Body1 = styled(body3)``;
+
+export const Small = styled(small)``;
 
 export const ButtonText = styled(button)``;
 

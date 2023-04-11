@@ -29,8 +29,8 @@ export const Container = styled.span<$ContainerProps>`
       case 'primary':
       default:
         return css`
-          border: 2px solid ${theme.colors.primary.gray900};
-          color: ${theme.colors.primary.gray900};
+          border: 2px solid ${theme.colors.primary.neutral800};
+          color: ${theme.colors.primary.neutral800};
           background-color: ${theme.colors.primary.yellowBee200};
           transition: background-color 0.2s ease-in-out;
           &:hover {

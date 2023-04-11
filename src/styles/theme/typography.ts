@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { from } from '../utils/responsive';
 
 export const title1 = styled.h1`
@@ -133,6 +133,19 @@ export const body3 = styled.p`
   ${from.laptop} {
     font-size: ${({ theme }) => theme.fontSizes.larger};
   }
+`;
+
+export const small = styled.p<{ $bold?: boolean; $underline?: boolean }>`
+  font-family: ${({ theme }) => theme.fonts.monserrat};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  line-height: ${({ theme }) => theme.lineHeights.base};
+
+  ${({ $underline }) =>
+    $underline &&
+    css`
+      text-decoration-line: underline;
+    `}
 `;
 
 export const button = styled.p`
