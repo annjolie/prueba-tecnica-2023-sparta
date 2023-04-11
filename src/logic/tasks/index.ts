@@ -1,4 +1,9 @@
 // Import required dependencies and action types
+import {
+  localStorageGetItem,
+  localStorageRemoveItem,
+  localStorageSetItem
+} from '../localStorage';
 import { TaskAction, TaskActionTypes } from './actionTypes';
 import type { TaskTypes } from './actionTypes';
 
@@ -8,7 +13,7 @@ export interface TaskState {
 }
 
 const initialAuthState: TaskState = {
-  tasks: JSON.parse(localStorage.getItem('todoTasks') || '[]')
+  tasks: JSON.parse(localStorageGetItem('todoTasks') || '[]')
 };
 
 const updateTasks = (tasks: TaskTypes[], task: TaskTypes) => {
@@ -29,7 +34,7 @@ export const tasksReducer = (
   switch (action.type) {
     case TaskActionTypes.ADD:
       // Add new task in local storage and return new state with tasks
-      localStorage.setItem(
+      localStorageSetItem(
         'todoTasks',
         JSON.stringify([...state.tasks, action.payload])
       );
@@ -39,7 +44,7 @@ export const tasksReducer = (
       };
     case TaskActionTypes.UPDATE:
       // Updating task in local storage and return new state with updated tasks
-      localStorage.setItem(
+      localStorageSetItem(
         'todoTasks',
         JSON.stringify(updateTasks(state.tasks, action.payload))
       );
@@ -49,7 +54,7 @@ export const tasksReducer = (
       };
     case TaskActionTypes.DELETE:
       // Delete task in local storage and return new state with updated tasks
-      localStorage.setItem(
+      localStorageSetItem(
         'todoTasks',
         JSON.stringify(
           state.tasks.filter((item) => item.id !== action.payload.id)
@@ -66,7 +71,7 @@ export const tasksReducer = (
       };
     case TaskActionTypes.CLEAR:
       // Clear all tasks from local storage and return new state without tasks
-      localStorage.removeItem('todoTasks');
+      localStorageRemoveItem('todoTasks');
       return {
         ...state,
         tasks: []

@@ -7,9 +7,14 @@ export interface LogoutAction {
   type: AuthActionTypes.LOGOUT;
 }
 
-export type AuthAction = LoginAction | LogoutAction;
+export interface GetTokenAction {
+  type: AuthActionTypes.GET_TOKEN;
+}
+
+export type AuthAction = LoginAction | LogoutAction | GetTokenAction;
 
 export enum AuthActionTypes {
   LOGIN = 'LOGIN',
-  LOGOUT = 'LOGOUT'
+  LOGOUT = 'LOGOUT',
+  GET_TOKEN = 'GET_TOKEN'
 }

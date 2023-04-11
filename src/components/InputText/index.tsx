@@ -11,7 +11,6 @@ import { Warning } from '@carbon/icons-react';
 import type { InputTextProps } from './types';
 
 export default function InputText({
-  autoComplete,
   className,
   helpMessage,
   id,
@@ -19,13 +18,8 @@ export default function InputText({
   type,
   name,
   value,
-  onBlur,
   onChange,
-  onFocus,
-  pattern,
   placeholder,
-  readOnly,
-  required,
   errorMessage
 }: InputTextProps): JSX.Element {
   return (
@@ -37,15 +31,9 @@ export default function InputText({
         $hasError={!!errorMessage}
         id={id}
         name={name}
-        onBlur={onBlur}
         onChange={onChange}
-        onFocus={onFocus}
-        pattern={pattern}
         placeholder={placeholder}
-        required={required}
         type={type}
-        autoComplete={autoComplete}
-        readOnly={readOnly}
         value={value}
       />
       {errorMessage ? (

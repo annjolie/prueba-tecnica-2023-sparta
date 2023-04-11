@@ -10,8 +10,6 @@ afterEach(cleanup);
 
 describe('Input type text component', () => {
   const onChange = jest.fn();
-  const onBlur = jest.fn();
-  const onFocus = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -69,46 +67,6 @@ describe('Input type text component', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('should call onBlur function when clicked', () => {
-    const testValue = 'Test Value';
-    const { getByDisplayValue } = render(
-      <ThemeProvider theme={appThemes.light}>
-        <InputText
-          label='Test'
-          id='1'
-          name='text-input'
-          type='text'
-          value={testValue}
-          onBlur={onBlur}
-        />
-      </ThemeProvider>
-    );
-    const inputElement = getByDisplayValue(testValue);
-    fireEvent.blur(inputElement);
-
-    expect(onBlur).toHaveBeenCalledTimes(1);
-  });
-
-  it('should call onFocus function when clicked', () => {
-    const testValue = 'Test Value';
-    const { getByDisplayValue } = render(
-      <ThemeProvider theme={appThemes.light}>
-        <InputText
-          label='Test'
-          id='1'
-          name='text-input'
-          type='text'
-          value={testValue}
-          onFocus={onFocus}
-        />
-      </ThemeProvider>
-    );
-    const inputElement = getByDisplayValue(testValue);
-    fireEvent.focus(inputElement);
-
-    expect(onFocus).toHaveBeenCalledTimes(1);
-  });
-
   it('should render an error message correctly', () => {
     const { getByTestId } = render(
       <ThemeProvider theme={appThemes.light}>
@@ -118,7 +76,6 @@ describe('Input type text component', () => {
           name='text-input'
           type='text'
           value='Value'
-          onFocus={onFocus}
           errorMessage='This is a error message.'
         />
       </ThemeProvider>
@@ -137,7 +94,6 @@ describe('Input type text component', () => {
           name='text-input'
           type='text'
           value='Value'
-          onFocus={onFocus}
           errorMessage='This is a error message.'
         />
       </ThemeProvider>
@@ -156,7 +112,6 @@ describe('Input type text component', () => {
           name='text-input'
           type='text'
           value='Value'
-          onFocus={onFocus}
           helpMessage='This is a hint text to help user.'
         />
       </ThemeProvider>
@@ -175,7 +130,6 @@ describe('Input type text component', () => {
           name='text-input'
           type='text'
           value='Value'
-          onFocus={onFocus}
           errorMessage='This is a error message.'
           helpMessage='This is a hint text to help user.'
         />

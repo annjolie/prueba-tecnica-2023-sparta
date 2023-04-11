@@ -3,4 +3,3 @@ export default _default;
 export declare const Default: any;
 export declare const WithHelper: any;
 export declare const WithError: any;
-export declare const Disabled: any;

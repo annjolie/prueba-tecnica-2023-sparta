@@ -89,20 +89,12 @@ declare const untypedThemes: {
         };
         lineHeights: {
             normal: string;
-            none: number;
-            shorter: number;
-            short: number;
-            base: number;
-            tall: number;
+            none: string;
+            shorter: string;
+            short: string;
+            base: string;
+            tall: string;
             taller: string;
-            3: string;
-            4: string;
-            5: string;
-            6: string;
-            7: string;
-            8: string;
-            9: string;
-            10: string;
         };
         letterSpacings: {
             tighter: string;
