@@ -1,11 +1,10 @@
 import { HTMLProps } from 'react';
 
 export type InputTextProps = {
-  error: boolean;
-  help: boolean;
   id: string;
   name: string;
-  type: 'text | email | password';
+  value: string;
+  type: 'text' | 'email' | 'password';
   autoComplete?: string;
   helpMessage?: string;
   errorMessage?: string;

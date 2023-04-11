@@ -13,13 +13,12 @@ import type { InputTextProps } from './types';
 export default function InputText({
   autoComplete,
   className,
-  error,
-  help,
   helpMessage,
   id,
   label,
   type,
   name,
+  value,
   onBlur,
   onChange,
   onFocus,
@@ -35,7 +34,7 @@ export default function InputText({
         {label}
       </Label>
       <StyledInput
-        $hasError={!!error}
+        $hasError={!!errorMessage}
         id={id}
         name={name}
         onBlur={onBlur}
@@ -47,14 +46,21 @@ export default function InputText({
         type={type}
         autoComplete={autoComplete}
         readOnly={readOnly}
+        value={value}
       />
-      {error ? (
-        <IconWrapper $hasError={!!error}>
-          <Warning />
-        </IconWrapper>
+      {errorMessage ? (
+        <>
+          <IconWrapper data-testid='inputTextErrorIcon'>
+            <Warning />
+          </IconWrapper>
+          <Error role='alert' data-testid='inputTextErrorMessage'>
+            {errorMessage}
+          </Error>
+        </>
       ) : null}
-      {error ? <Error role='alert'>{errorMessage}</Error> : null}
-      {help && !error ? <Helper>{helpMessage}</Helper> : null}
+      {helpMessage && !errorMessage ? (
+        <Helper data-testid='inputTextHelpMessage'>{helpMessage}</Helper>
+      ) : null}
     </Container>
   );
 }

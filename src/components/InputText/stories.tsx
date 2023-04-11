@@ -13,7 +13,6 @@ export default {
     id: '1',
     name: 'text-input',
     disabled: false,
-    error: false,
     type: 'text'
   }
 } as Meta;

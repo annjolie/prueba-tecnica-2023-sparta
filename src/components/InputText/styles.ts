@@ -49,7 +49,7 @@ export const StyledInput = styled.input<StylesProps>`
     `}
 `;
 
-export const IconWrapper = styled.div<StylesProps>`
+export const IconWrapper = styled.div`
   position: absolute;
   width: 1rem;
   height: 1rem;
