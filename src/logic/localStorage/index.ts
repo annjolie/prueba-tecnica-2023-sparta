@@ -1,6 +1,4 @@
 export const localStorageGetItem = (key: string) => {
-  console.log('localStorageGetItem', key);
-
   if (typeof window !== 'undefined') {
     return localStorage.getItem(key);
   }

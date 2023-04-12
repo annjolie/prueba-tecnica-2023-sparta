@@ -43,6 +43,6 @@ export const authReducer: Reducer<AuthState> = (
         token: localStorageGetItem('authToken')
       };
     default:
-      return { token: null };
+      return { ...state };
   }
 };

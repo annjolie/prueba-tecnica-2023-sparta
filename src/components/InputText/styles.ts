@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
-  min-height: 6.5rem;
+  min-height: 4rem;
   width: 100%;
 `;
 

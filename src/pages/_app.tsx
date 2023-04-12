@@ -3,7 +3,7 @@ import themes from '../styles/theme';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import React from 'react';
-import { connect, Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import rootReducer from '../logic/reducers';
 import { configureStore } from '@reduxjs/toolkit';
 
@@ -16,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider theme={themes.light}>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </>
   );

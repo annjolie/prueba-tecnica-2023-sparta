@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
 import { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { LogIn } from '../../../logic/auth/actions';
 
 import { loginHandler } from '../../../logic/api';
-import { authReducer } from '../../../logic/auth';
-import { AuthActionTypes } from '../../../logic/auth/actionTypes';
 
 export const useLoginForm = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [user, setUser] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -14,14 +15,10 @@ export const useLoginForm = () => {
     async (event) => {
       event.preventDefault();
       const result = await loginHandler();
-      const action = {
-        type: AuthActionTypes.LOGIN,
-        payload: { token: result.token }
-      };
-      authReducer({ token: null }, action);
-      router.push('/');
+      dispatch(LogIn(result.token));
+      router.replace('/');
     },
-    [loginHandler, authReducer]
+    [loginHandler, dispatch, LogIn, router]
   );
 
   const handleUserChange = useCallback(

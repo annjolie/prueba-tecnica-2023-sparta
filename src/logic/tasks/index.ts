@@ -79,6 +79,6 @@ export const tasksReducer: Reducer<TaskState> = (
         tasks: []
       };
     default:
-      return state;
+      return { ...state };
   }
 };

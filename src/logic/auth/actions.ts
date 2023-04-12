@@ -8,3 +8,7 @@ export const LogIn = (token: string) => ({
   type: AuthActionTypes.LOGIN,
   payload: { token: token }
 });
+
+export const GetToken = () => ({
+  type: AuthActionTypes.GET_TOKEN
+});

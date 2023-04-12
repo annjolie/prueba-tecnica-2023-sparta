@@ -2,63 +2,63 @@ import { useRouter } from 'next/router';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { TaskState } from '../../../logic/tasks';
-import { AddTask, UpdateTask, DeleteTask } from '../../../logic/tasks/actions';
+import {
+  AddTask,
+  UpdateTask,
+  DeleteTask,
+  ClearTask
+} from '../../../logic/tasks/actions';
 import { LogOut } from '../../../logic/auth/actions';
 import { EditItem } from './types';
+import { TaskTypes } from '../../../logic/tasks/actionTypes';
 
 export const useLogic = () => {
   const router = useRouter();
-  // const dispatch = useDispatch();
-  // const tasks = useSelector((state: TaskState) => state.tasks);
-  const tasks = [
-    {
-      id: '1',
-      completed: false,
-      editing: false,
-      description: 'Task 1 description'
-    },
-    {
-      id: '2',
-      completed: false,
-      editing: false,
-      description: 'Task 2 description'
-    }
-  ];
-  const [editingList, setEditingList] = useState<EditItem[]>([]);
+
+  const tasks = useSelector((state: any) => state.tasksReducer.tasks);
+
+  const dispatch = useDispatch();
+  const [editingList, setEditingList] = useState<EditItem[]>(
+    tasks
+      .filter((i: TaskTypes) => i.editing)
+      .map((i: TaskTypes) => ({ id: i.id, value: i.description }))
+  );
 
   const handleItemDescriptionChange = useCallback(
     (itemId: string, description: string) => {
-      const task = tasks.find((i) => i.id === itemId);
-      if (!task) {
+      const item = editingList.find((i: EditItem) => i.id === itemId);
+      if (!item) {
         return;
       }
-      task.description = description;
-      //dispatch(UpdateTask(task));
+      item.value = description;
+      setEditingList([...editingList]);
     },
-    [UpdateTask, tasks]
+    [setEditingList, editingList]
   );
 
-  const handleAddItem = useCallback(
-    (description: string) => {
-      const task = {
-        id: uuidv4(),
-        text: description,
-        completed: false
-      };
-      // dispatch(AddTask(task));
-    },
-    [AddTask]
-  );
+  const handleAddItem = useCallback(() => {
+    const task = {
+      id: uuidv4(),
+      description: 'New task',
+      completed: false,
+      editing: false
+    };
+    dispatch(AddTask(task));
+  }, [dispatch, AddTask]);
 
   const handleEditItem = useCallback(
     (itemId: string) => {
-      const task = tasks.find((i) => i.id === itemId);
+      const task = tasks.find((i: TaskTypes) => i.id === itemId);
       if (!task) {
         return;
       }
-      task.editing = true;
-      //dispatch(UpdateTask(task));
+      const newTask = {
+        id: task.id,
+        description: task.description,
+        completed: task.completed,
+        editing: true
+      };
+      dispatch(UpdateTask(newTask));
       const copyList = [...editingList];
       copyList.push({
         id: itemId,
@@ -66,67 +66,83 @@ export const useLogic = () => {
       });
       setEditingList(copyList);
     },
-    [UpdateTask, tasks]
+    [dispatch, UpdateTask, tasks, setEditingList, editingList]
   );
 
   const handleToggleItem = useCallback(
     (itemId: string) => {
-      const task = tasks.find((i) => i.id === itemId);
+      const task = tasks.find((i: TaskTypes) => i.id === itemId);
       if (!task) {
         return;
       }
-      task.completed = !task.completed;
-      // dispatch(UpdateTask(task));
+      const newTask = {
+        id: task.id,
+        description: task.description,
+        completed: !task.completed,
+        editing: true
+      };
+      dispatch(UpdateTask(newTask));
     },
-    [UpdateTask, tasks]
+    [dispatch, UpdateTask, tasks]
   );
 
   const handleUpdateItem = useCallback(
     (itemId: string) => {
-      const task = tasks.find((i) => i.id === itemId);
+      const task = tasks.find((i: TaskTypes) => i.id === itemId);
       const editingItem = editingList.find((i) => i.id === itemId);
       if (!task || !editingItem) {
         return;
       }
-      task.editing = false;
-      task.description = editingItem.value;
-      //dispatch(UpdateTask(task));
+      const newTask = {
+        id: task.id,
+        description: editingItem.value,
+        completed: task.completed,
+        editing: false
+      };
+      dispatch(UpdateTask(newTask));
       setEditingList((prev) =>
         prev.filter((editItem) => editItem.id !== itemId)
       );
     },
-    [UpdateTask, tasks, editingList]
+    [dispatch, UpdateTask, tasks, editingList]
   );
 
   const handleDeleteItem = useCallback(
     (itemId: string) => {
-      const task = tasks.find((i) => i.id === itemId);
+      const task = tasks.find((i: TaskTypes) => i.id === itemId);
       if (!task) {
+        return;
       }
-      //dispatch(DeleteTask(task));
+      dispatch(DeleteTask(task));
     },
-    [DeleteTask, tasks]
+    [dispatch, DeleteTask, tasks]
   );
 
   const handleCancelItemChange = useCallback(
     (itemId: string) => {
-      const task = tasks.find((i) => i.id === itemId);
+      const task = tasks.find((i: TaskTypes) => i.id === itemId);
       if (!task) {
         return;
       }
-      task.editing = false;
-      // dispatch(UpdateTask(task));
+      const newTask = {
+        id: task.id,
+        description: task.description,
+        completed: task.completed,
+        editing: false
+      };
+      dispatch(UpdateTask(newTask));
       setEditingList((prev) =>
         prev.filter((editItem) => editItem.id !== itemId)
       );
     },
-    [setEditingList]
+    [dispatch, UpdateTask, tasks, setEditingList]
   );
 
   const handleLogout = useCallback(() => {
-    //dispatch(LogOut());
+    dispatch(LogOut());
+    dispatch(ClearTask());
     router.push('/login');
-  }, [router]);
+  }, [dispatch, LogOut, ClearTask, router]);
 
   const getEditingValue = useCallback(
     (itemId: string) => {

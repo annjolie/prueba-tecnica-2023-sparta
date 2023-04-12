@@ -5,10 +5,12 @@ import {
   Title,
   AddAltIcon,
   Wrapper,
+  EditingWrapper,
   Item,
   ItemTitle,
   CloseIcon,
   CheckIcon,
+  IconsWrapper,
   TaskWrapper,
   TrashCanIcon,
   EditIcon
@@ -17,6 +19,7 @@ import Navbar from '../../../components/Navbar';
 import InputText from '../../../components/InputText';
 import { useLogic } from './logic';
 import Checkbox from '../../../components/Checkbox';
+import { TaskTypes } from '../../../logic/tasks/actionTypes';
 
 export default function DashboardView(): JSX.Element {
   const {
@@ -36,12 +39,12 @@ export default function DashboardView(): JSX.Element {
       <Navbar logOut={handleLogout} />
       <TitleWrapper>
         <Title>List</Title>
-        <AddAltIcon onClick={() => {}} />
+        <AddAltIcon onClick={() => handleAddItem()} />
       </TitleWrapper>
       <Wrapper>
-        {tasks.map((item) => {
+        {tasks.map((item: TaskTypes) => {
           return item.editing ? (
-            <>
+            <EditingWrapper>
               <InputText
                 id='{id}'
                 name='{input-name}'
@@ -54,9 +57,12 @@ export default function DashboardView(): JSX.Element {
                   )
                 }
               />
-              <CloseIcon onClick={() => handleCancelItemChange(item.id)} />
-              <CheckIcon onClick={() => handleUpdateItem(item.id)} />
-            </>
+              <CloseIcon
+                onClick={() => handleCancelItemChange(item.id)}
+                size='24'
+              />
+              <CheckIcon onClick={() => handleUpdateItem(item.id)} size='24' />
+            </EditingWrapper>
           ) : (
             <TaskWrapper>
               <Checkbox
@@ -66,8 +72,10 @@ export default function DashboardView(): JSX.Element {
               />
               <Item key={item.id}>
                 <ItemTitle>{item.description}</ItemTitle>
-                <TrashCanIcon onClick={() => handleDeleteItem(item.id)} />
-                <EditIcon onClick={() => handleEditItem(item.id)} />
+                <IconsWrapper>
+                  <TrashCanIcon onClick={() => handleDeleteItem(item.id)} />
+                  <EditIcon onClick={() => handleEditItem(item.id)} />
+                </IconsWrapper>
               </Item>
             </TaskWrapper>
           );
