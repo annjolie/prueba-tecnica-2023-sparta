@@ -79,7 +79,7 @@ export const useLogic = () => {
         id: task.id,
         description: task.description,
         completed: !task.completed,
-        editing: true
+        editing: false
       };
       dispatch(UpdateTask(newTask));
     },

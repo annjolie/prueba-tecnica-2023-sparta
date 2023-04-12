@@ -17,7 +17,8 @@ const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   id: 'default',
-  disabled: false
+  disabled: false,
+  onChange: () => alert('onChange')
 };
 
 export const Checked = Template.bind({});

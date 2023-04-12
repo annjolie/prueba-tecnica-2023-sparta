@@ -68,7 +68,9 @@ export default function DashboardView(): JSX.Element {
               <Checkbox
                 onChange={() => handleToggleItem(item.id)}
                 checked={item.completed}
-                label=''
+                label={item.description || 'No description'}
+                id={item.description || 'No description'}
+                disabled={false}
               />
               <Item key={item.id}>
                 <ItemTitle>{item.description}</ItemTitle>
