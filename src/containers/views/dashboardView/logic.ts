@@ -9,8 +9,22 @@ import { EditItem } from './types';
 
 export const useLogic = () => {
   const router = useRouter();
-  const dispatch = useDispatch();
-  const tasks = useSelector((state: TaskState) => state.tasks);
+  // const dispatch = useDispatch();
+  // const tasks = useSelector((state: TaskState) => state.tasks);
+  const tasks = [
+    {
+      id: '1',
+      completed: false,
+      editing: false,
+      description: 'Task 1 description'
+    },
+    {
+      id: '2',
+      completed: false,
+      editing: false,
+      description: 'Task 2 description'
+    }
+  ];
   const [editingList, setEditingList] = useState<EditItem[]>([]);
 
   const handleItemDescriptionChange = useCallback(
@@ -20,9 +34,9 @@ export const useLogic = () => {
         return;
       }
       task.description = description;
-      dispatch(UpdateTask(task));
+      //dispatch(UpdateTask(task));
     },
-    [dispatch, UpdateTask, tasks]
+    [UpdateTask, tasks]
   );
 
   const handleAddItem = useCallback(
@@ -32,9 +46,9 @@ export const useLogic = () => {
         text: description,
         completed: false
       };
-      dispatch(AddTask(task));
+      // dispatch(AddTask(task));
     },
-    [dispatch, AddTask]
+    [AddTask]
   );
 
   const handleEditItem = useCallback(
@@ -44,7 +58,7 @@ export const useLogic = () => {
         return;
       }
       task.editing = true;
-      dispatch(UpdateTask(task));
+      //dispatch(UpdateTask(task));
       const copyList = [...editingList];
       copyList.push({
         id: itemId,
@@ -52,7 +66,7 @@ export const useLogic = () => {
       });
       setEditingList(copyList);
     },
-    [dispatch, UpdateTask, tasks]
+    [UpdateTask, tasks]
   );
 
   const handleToggleItem = useCallback(
@@ -62,9 +76,9 @@ export const useLogic = () => {
         return;
       }
       task.completed = !task.completed;
-      dispatch(UpdateTask(task));
+      // dispatch(UpdateTask(task));
     },
-    [dispatch, UpdateTask, tasks]
+    [UpdateTask, tasks]
   );
 
   const handleUpdateItem = useCallback(
@@ -76,23 +90,22 @@ export const useLogic = () => {
       }
       task.editing = false;
       task.description = editingItem.value;
-      dispatch(UpdateTask(task));
+      //dispatch(UpdateTask(task));
       setEditingList((prev) =>
         prev.filter((editItem) => editItem.id !== itemId)
       );
     },
-    [dispatch, UpdateTask, tasks, editingList]
+    [UpdateTask, tasks, editingList]
   );
 
   const handleDeleteItem = useCallback(
     (itemId: string) => {
       const task = tasks.find((i) => i.id === itemId);
       if (!task) {
-        return;
       }
-      dispatch(DeleteTask(task));
+      //dispatch(DeleteTask(task));
     },
-    [dispatch, DeleteTask, tasks]
+    [DeleteTask, tasks]
   );
 
   const handleCancelItemChange = useCallback(
@@ -102,7 +115,7 @@ export const useLogic = () => {
         return;
       }
       task.editing = false;
-      dispatch(UpdateTask(task));
+      // dispatch(UpdateTask(task));
       setEditingList((prev) =>
         prev.filter((editItem) => editItem.id !== itemId)
       );
@@ -111,7 +124,7 @@ export const useLogic = () => {
   );
 
   const handleLogout = useCallback(() => {
-    dispatch(LogOut());
+    //dispatch(LogOut());
     router.push('/login');
   }, [router]);
 

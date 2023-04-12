@@ -69,8 +69,7 @@ const theme = {
       supportSuccess50: '#E3F5E1'
     },
     shadows: {
-      default:
-        '0px 12px 16px -4px rgba(16, 24, 40, 0.1), 0px 4px 6px -2px rgba(16, 24, 40, 0.05)'
+      shadow24: '0px 6px 12px 10px rgba(16, 15, 22, 0.08)'
     }
   },
   fonts: {

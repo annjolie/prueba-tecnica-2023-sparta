@@ -16,12 +16,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider theme={themes.light}>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
 }
 
-export default connect()(MyApp);
+export default MyApp;

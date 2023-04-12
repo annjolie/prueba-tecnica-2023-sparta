@@ -1,21 +1,24 @@
 import React from 'react';
 import {
   Container,
+  TitleWrapper,
   Title,
+  AddAltIcon,
   Wrapper,
   Item,
   ItemTitle,
   CloseIcon,
   CheckIcon,
+  TaskWrapper,
   TrashCanIcon,
   EditIcon
 } from './styles';
 import Navbar from '../../../components/Navbar';
-import { DashboardProps } from './types';
 import InputText from '../../../components/InputText';
 import { useLogic } from './logic';
+import Checkbox from '../../../components/Checkbox';
 
-export default function Dashboard({ className }: DashboardProps): JSX.Element {
+export default function DashboardView(): JSX.Element {
   const {
     tasks,
     handleItemDescriptionChange,
@@ -29,9 +32,12 @@ export default function Dashboard({ className }: DashboardProps): JSX.Element {
     getEditingValue
   } = useLogic();
   return (
-    <Container className={className}>
+    <Container>
       <Navbar logOut={handleLogout} />
-      <Title>List</Title>
+      <TitleWrapper>
+        <Title>List</Title>
+        <AddAltIcon onClick={() => {}} />
+      </TitleWrapper>
       <Wrapper>
         {tasks.map((item) => {
           return item.editing ? (
@@ -52,13 +58,18 @@ export default function Dashboard({ className }: DashboardProps): JSX.Element {
               <CheckIcon onClick={() => handleUpdateItem(item.id)} />
             </>
           ) : (
-            <>
+            <TaskWrapper>
+              <Checkbox
+                onChange={() => handleToggleItem(item.id)}
+                checked={item.completed}
+                label=''
+              />
               <Item key={item.id}>
                 <ItemTitle>{item.description}</ItemTitle>
                 <TrashCanIcon onClick={() => handleDeleteItem(item.id)} />
                 <EditIcon onClick={() => handleEditItem(item.id)} />
               </Item>
-            </>
+            </TaskWrapper>
           );
         })}
       </Wrapper>

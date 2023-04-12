@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { button } from '../../styles/theme/typography';
+import { body1, button } from '../../styles/theme/typography';
 import { $ContainerProps } from './types';
 
 export const Container = styled.span<$ContainerProps>`
@@ -30,14 +30,14 @@ export const Container = styled.span<$ContainerProps>`
       default:
         return css`
           border: 2px solid ${theme.colors.primary.neutral800};
-          color: ${theme.colors.primary.neutral800};
-          background-color: ${theme.colors.primary.yellowBee200};
+          color: ${theme.colors.primary.white};
+          background-color: ${theme.colors.primary.neutral800};
           transition: background-color 0.2s ease-in-out;
           &:hover {
-            background-color: ${theme.colors.primary.yellowBee100};
+            background-color: ${theme.colors.primary.neutral700};
           }
           &:focus-visible {
-            background-color: ${theme.colors.primary.yellowBee200};
+            background-color: ${theme.colors.primary.neutral800};
             outline: solid 1px theme.colors.yellowBee100;
           }
           :disabled {
@@ -48,6 +48,6 @@ export const Container = styled.span<$ContainerProps>`
   }}
 `;
 
-export const ButtonLabel = styled(button)``;
+export const ButtonLabel = styled(body1)``;
 
 export const Label = styled.p``;
