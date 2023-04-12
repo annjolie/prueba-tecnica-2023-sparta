@@ -7,10 +7,10 @@ export default function Navbar({ className }: NavbarProps): JSX.Element {
   return (
     <Container className={className}>
       <Title>Sparta</Title>
-      <Wrapper href='/'>
+      <Wrapper href='/login'>
         <Text>Logout</Text>
         <IconContainer>
-          <Logout size={20}/>
+          <Logout size={20} />
         </IconContainer>
       </Wrapper>
     </Container>
