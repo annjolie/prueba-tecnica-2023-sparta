@@ -10,19 +10,15 @@ export const useLoginForm = () => {
   const [user, setUser] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const onSubmit = useCallback(
-    async (event) => {
-      event.preventDefault();
-      const result = await loginHandler();
-      const action = {
-        type: AuthActionTypes.LOGIN,
-        payload: { token: result.token }
-      };
-      authReducer({ token: null }, action);
-      router.push('/');
-    },
-    [loginHandler, authReducer]
-  );
+  const onSubmit = useCallback(async () => {
+    const result = await loginHandler();
+    const action = {
+      type: AuthActionTypes.LOGIN,
+      payload: { token: result.token }
+    };
+    authReducer({ token: null }, action);
+    router.replace('/');
+  }, [loginHandler, authReducer]);
 
   const handleUserChange = useCallback(
     (value: string) => {

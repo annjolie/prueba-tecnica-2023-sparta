@@ -10,4 +10,4 @@ export const UserInput = styled(InputText)``;
 
 export const PasswordInput = styled(InputText)``;
 
-export const LoginButton = styled(Button)``;
+export const LoginButton = styled(Button).attrs({ type: 'button' })``;

@@ -13,7 +13,6 @@ const WithProtected = <P extends object>(
     const initialState: AuthState | undefined = undefined;
     const { token } = authReducer(initialState, action);
     const isLoggedIn = !!token;
-    console.log({ token, isLoggedIn });
     useEffect(() => {
       if (!isLoggedIn) {
         router.push('/login');

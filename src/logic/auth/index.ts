@@ -39,7 +39,8 @@ export const authReducer = (
     // Returns the current token
     case AuthActionTypes.GET_TOKEN:
       return {
-        ...state
+        ...state,
+        token: localStorageGetItem('authToken')
       };
     default:
       return state;

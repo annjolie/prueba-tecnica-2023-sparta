@@ -3,15 +3,15 @@ import Head from 'next/head';
 import React from 'react';
 import WithProtected from '../auth/withProtected';
 
+import { DashboardView } from '../containers/views/dashboardView';
+
 const DashboardPage: NextPage = () => (
   <>
     <Head>
-      <title>LongevityOne | Dashboard</title>
+      <title>Sparta</title>
       <meta name='description' content='Ride in the front' />
     </Head>
-    <main>
-      <h1>Dashboard</h1>
-    </main>
+    <DashboardView />
   </>
 );
 

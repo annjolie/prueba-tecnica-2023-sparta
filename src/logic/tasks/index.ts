@@ -67,7 +67,8 @@ export const tasksReducer = (
     case TaskActionTypes.GET:
       // Get state with all tasks
       return {
-        ...state
+        ...state,
+        tasks: JSON.parse(localStorageGetItem('todoTasks') || '[]')
       };
     case TaskActionTypes.CLEAR:
       // Clear all tasks from local storage and return new state without tasks
