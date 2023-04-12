@@ -10,7 +10,7 @@ describe('tasksReducer', () => {
     const action = {
       type: TaskActionTypes.ADD,
       payload: {
-        id: 1,
+        id: '1',
         description: 'Task 1',
         completed: false
       }
@@ -28,12 +28,12 @@ describe('tasksReducer', () => {
     const prevState: TaskState = {
       tasks: [
         {
-          id: 1,
+          id: '1',
           description: 'Task 1',
           completed: false
         },
         {
-          id: 2,
+          id: '2',
           description: 'Task 2',
           completed: false
         }
@@ -61,12 +61,12 @@ describe('tasksReducer', () => {
     const prevState = {
       tasks: [
         {
-          id: 1,
+          id: '1',
           description: 'Task 1',
           completed: false
         },
         {
-          id: 2,
+          id: '2',
           description: 'Task 2',
           completed: false
         }
@@ -76,7 +76,7 @@ describe('tasksReducer', () => {
     const action = {
       type: TaskActionTypes.DELETE,
       payload: {
-        id: 2,
+        id: '2',
         description: 'Task 2',
         completed: false
       }
@@ -94,12 +94,12 @@ describe('tasksReducer', () => {
     const prevState = {
       tasks: [
         {
-          id: 1,
+          id: '1',
           description: 'Task 1',
           completed: false
         },
         {
-          id: 2,
+          id: '2',
           description: 'Task 2',
           completed: false
         }

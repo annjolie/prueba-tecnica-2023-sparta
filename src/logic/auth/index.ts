@@ -5,7 +5,7 @@ import {
   localStorageSetItem
 } from '../localStorage';
 import { AuthAction, AuthActionTypes } from './actionTypes';
-
+import type { Reducer } from '@reduxjs/toolkit';
 // Define the initial state for authentication
 
 export interface AuthState {
@@ -17,7 +17,7 @@ const initialAuthState: AuthState = {
 };
 
 // Define the authReducer function to handle authentication actions
-export const authReducer = (
+export const authReducer: Reducer<AuthState> = (
   state = initialAuthState,
   action: AuthAction
 ): AuthState => {
@@ -43,6 +43,6 @@ export const authReducer = (
         token: localStorageGetItem('authToken')
       };
     default:
-      return state;
+      return { token: null };
   }
 };

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { H2Heading, Body1 } from '../Typography/styles';
-import Link from 'next/link';
+import { H3Heading, Body1 } from '../Typography/styles';
 
 export const Container = styled.div`
   display: flex;
@@ -9,9 +8,9 @@ export const Container = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.colors.primary.neutral600};
 `;
 
-export const Title = styled(H2Heading)``;
+export const Title = styled(H3Heading)``;
 
-export const Wrapper = styled(Link)`
+export const Wrapper = styled.a`
   cursor: pointer;
   display: flex;
   gap: 1rem;

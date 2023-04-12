@@ -6,6 +6,7 @@ import {
 } from '../localStorage';
 import { TaskAction, TaskActionTypes } from './actionTypes';
 import type { TaskTypes } from './actionTypes';
+import type { Reducer } from '@reduxjs/toolkit';
 
 // Define the initial state for authentication
 export interface TaskState {
@@ -27,7 +28,7 @@ const updateTasks = (tasks: TaskTypes[], task: TaskTypes) => {
 };
 
 // Define the authReducer function to handle authentication actions
-export const tasksReducer = (
+export const tasksReducer: Reducer<TaskState> = (
   state = initialAuthState,
   action: TaskAction
 ): TaskState => {

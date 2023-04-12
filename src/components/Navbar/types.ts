@@ -1,1 +1,4 @@
-export type NavbarProps = { className?: string };
+export type NavbarProps = {
+  logOut: () => void;
+  className?: string;
+};
