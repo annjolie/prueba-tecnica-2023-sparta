@@ -1,5 +1,6 @@
 import { TaskActionTypes, TaskTypes } from './actionTypes';
 
+// el CRUD de las tareas
 export const AddTask = (task: TaskTypes) => ({
   type: TaskActionTypes.ADD,
   payload: task

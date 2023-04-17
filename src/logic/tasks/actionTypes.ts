@@ -1,3 +1,4 @@
+// este archivo contiene los tipos de acciones que se pueden realizar en el reducer de tareas
 export type TaskTypes = {
   id: string;
   description?: string;

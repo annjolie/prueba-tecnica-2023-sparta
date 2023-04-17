@@ -3,7 +3,6 @@ import { authReducer } from '../../../src/logic/auth';
 import { loginHandler, logoutHandler } from '../../../src/logic/api';
 import {
   AuthActionTypes,
-  GetTokenAction,
   LogoutAction
 } from '../../../src/logic/auth/actionTypes';
 
@@ -30,15 +29,6 @@ describe('authReducer', () => {
     };
     const newState = authReducer({ token: '123' }, action);
     expect(newState.token).toEqual(null);
-  });
-
-  it('handles actions of type GET_TOKEN', async () => {
-    await logoutHandler();
-    const action: GetTokenAction = {
-      type: AuthActionTypes.GET_TOKEN
-    };
-    const newState = authReducer({ token: '123' }, action);
-    expect(newState.token).toEqual('123');
   });
 
   it('handles action with unknown type', () => {

@@ -19,7 +19,7 @@ describe('tasksReducer', () => {
     const newState = tasksReducer({ tasks: [] }, action);
 
     expect(newState.tasks.length).toEqual(1);
-    expect(newState.tasks[0].id).toEqual(1);
+    expect(newState.tasks[0].id).toEqual('1');
     expect(newState.tasks[0].description).toEqual('Task 1');
     expect(newState.tasks[0].completed).toEqual(false);
   });
@@ -43,7 +43,7 @@ describe('tasksReducer', () => {
     const action = {
       type: TaskActionTypes.UPDATE,
       payload: {
-        id: 2,
+        id: '2',
         description: 'Task 2 updated',
         completed: true
       }
@@ -52,7 +52,7 @@ describe('tasksReducer', () => {
     const newState = tasksReducer(prevState, action);
 
     expect(newState.tasks.length).toEqual(2);
-    expect(newState.tasks[1].id).toEqual(2);
+    expect(newState.tasks[1].id).toEqual('2');
     expect(newState.tasks[1].description).toEqual('Task 2 updated');
     expect(newState.tasks[1].completed).toEqual(true);
   });
@@ -85,7 +85,7 @@ describe('tasksReducer', () => {
     const newState = tasksReducer(prevState, action);
 
     expect(newState.tasks.length).toEqual(1);
-    expect(newState.tasks[0].id).toEqual(1);
+    expect(newState.tasks[0].id).toEqual('1');
     expect(newState.tasks[0].description).toEqual('Task 1');
     expect(newState.tasks[0].completed).toEqual(false);
   });

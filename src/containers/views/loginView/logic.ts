@@ -11,6 +11,7 @@ export const useLoginForm = () => {
   const [user, setUser] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  // genera el token y lo guarda en el store
   const onSubmit = useCallback(
     async (event) => {
       event.preventDefault();
@@ -21,6 +22,7 @@ export const useLoginForm = () => {
     [loginHandler, dispatch, LogIn, router]
   );
 
+  // maneja el cambio a nivel de estado del usuario
   const handleUserChange = useCallback(
     (value: string) => {
       setUser(value);
@@ -28,6 +30,7 @@ export const useLoginForm = () => {
     [setUser]
   );
 
+  // maneja el cambio a nivel de estado de la contraseña
   const handlePasswordChange = useCallback(
     (value: string) => {
       setPassword(value);

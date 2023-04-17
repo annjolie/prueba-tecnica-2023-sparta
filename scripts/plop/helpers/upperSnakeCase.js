@@ -4,6 +4,6 @@ const snakeCase = require('lodash/snakeCase');
 module.exports = function (plop) {
   plop.setHelper(
     'upperSnakeCase',
-    compose((word) => word.toUpperCase(), snakeCase),
+    compose((word) => word.toUpperCase(), snakeCase)
   );
 };

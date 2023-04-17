@@ -13,17 +13,19 @@ import { EditItem } from './types';
 import { TaskTypes } from '../../../logic/tasks/actionTypes';
 
 export const useLogic = () => {
+  // inicializacion de variables
   const router = useRouter();
 
   const tasks = useSelector((state: any) => state.tasksReducer.tasks);
 
   const dispatch = useDispatch();
+  // estado para editar las tareas
   const [editingList, setEditingList] = useState<EditItem[]>(
     tasks
       .filter((i: TaskTypes) => i.editing)
       .map((i: TaskTypes) => ({ id: i.id, value: i.description }))
   );
-
+  // modificar la descripcion de la tarea
   const handleItemDescriptionChange = useCallback(
     (itemId: string, description: string) => {
       const item = editingList.find((i: EditItem) => i.id === itemId);
@@ -35,7 +37,7 @@ export const useLogic = () => {
     },
     [setEditingList, editingList]
   );
-
+  // agregar una nueva tarea
   const handleAddItem = useCallback(() => {
     const task = {
       id: uuidv4(),
@@ -46,6 +48,9 @@ export const useLogic = () => {
     dispatch(AddTask(task));
   }, [dispatch, AddTask]);
 
+  // mostrar el input para editar la tarea
+  // 1 se ejecuta un trigger para editar la tarea colocando editing en true
+  // 2 se agrega el id y la descripcion de la tarea a la lista de edicion
   const handleEditItem = useCallback(
     (itemId: string) => {
       const task = tasks.find((i: TaskTypes) => i.id === itemId);
@@ -69,6 +74,7 @@ export const useLogic = () => {
     [dispatch, UpdateTask, tasks, setEditingList, editingList]
   );
 
+  // marcar completado o no completado la tarea
   const handleToggleItem = useCallback(
     (itemId: string) => {
       const task = tasks.find((i: TaskTypes) => i.id === itemId);
@@ -86,6 +92,7 @@ export const useLogic = () => {
     [dispatch, UpdateTask, tasks]
   );
 
+  // guardar la tarea editada
   const handleUpdateItem = useCallback(
     (itemId: string) => {
       const task = tasks.find((i: TaskTypes) => i.id === itemId);
@@ -107,6 +114,7 @@ export const useLogic = () => {
     [dispatch, UpdateTask, tasks, editingList]
   );
 
+  // eliminar la tarea
   const handleDeleteItem = useCallback(
     (itemId: string) => {
       const task = tasks.find((i: TaskTypes) => i.id === itemId);
@@ -118,6 +126,7 @@ export const useLogic = () => {
     [dispatch, DeleteTask, tasks]
   );
 
+  // cancelar la edicion de la tarea
   const handleCancelItemChange = useCallback(
     (itemId: string) => {
       const task = tasks.find((i: TaskTypes) => i.id === itemId);
@@ -138,12 +147,15 @@ export const useLogic = () => {
     [dispatch, UpdateTask, tasks, setEditingList]
   );
 
+  // cerrar sesion
+  // envia  la vista de login
   const handleLogout = useCallback(() => {
     dispatch(LogOut());
     dispatch(ClearTask());
     router.push('/login');
   }, [dispatch, LogOut, ClearTask, router]);
 
+  // devuelve el valor de la tarea a editar
   const getEditingValue = useCallback(
     (itemId: string) => {
       const editingItem = editingList.find((i) => i.id === itemId);
