@@ -28,6 +28,7 @@ const updateTasks = (tasks: TaskTypes[], task: TaskTypes) => {
 };
 
 // Define the authReducer function to handle authentication actions
+// esta funcion es la encargada de manejar los cambios de estado de las tareas
 export const tasksReducer: Reducer<TaskState> = (
   state = initialAuthState,
   action: TaskAction
@@ -35,6 +36,7 @@ export const tasksReducer: Reducer<TaskState> = (
   switch (action.type) {
     case TaskActionTypes.ADD:
       // Add new task in local storage and return new state with tasks
+      // agrega una nueva tarea en el local storage y devuelve un nuevo estado con las tareas
       localStorageSetItem(
         'todoTasks',
         JSON.stringify([...state.tasks, action.payload])
@@ -45,6 +47,7 @@ export const tasksReducer: Reducer<TaskState> = (
       };
     case TaskActionTypes.UPDATE:
       // Updating task in local storage and return new state with updated tasks
+      // actualiza una tarea en el local storage y devuelve un nuevo estado con las tareas actualizadas
       localStorageSetItem(
         'todoTasks',
         JSON.stringify(updateTasks(state.tasks, action.payload))
@@ -55,6 +58,7 @@ export const tasksReducer: Reducer<TaskState> = (
       };
     case TaskActionTypes.DELETE:
       // Delete task in local storage and return new state with updated tasks
+      // elimina una tarea en el local storage y devuelve un nuevo estado con las tareas actualizadas
       localStorageSetItem(
         'todoTasks',
         JSON.stringify(
@@ -67,12 +71,14 @@ export const tasksReducer: Reducer<TaskState> = (
       };
     case TaskActionTypes.GET:
       // Get state with all tasks
+      // devuelve el estado con todas las tareas
       return {
         ...state,
         tasks: JSON.parse(localStorageGetItem('todoTasks') || '[]')
       };
     case TaskActionTypes.CLEAR:
       // Clear all tasks from local storage and return new state without tasks
+      // elimina todas las tareas del local storage y devuelve un nuevo estado sin tareas
       localStorageRemoveItem('todoTasks');
       return {
         ...state,

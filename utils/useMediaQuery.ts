@@ -1,5 +1,4 @@
 import { useLayoutEffect, useState } from 'react';
-
 export default function useMediaQuery(query: string) {
   // query looks like: @media (min-width: XYZpx)
   const QUERY_FIRST_CHARACTER = 7;
